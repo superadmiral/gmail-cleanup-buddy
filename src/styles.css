@@ -142,3 +142,21 @@
     color: var(--color-foreground);
   }
 }
+
+/* Slim custom scrollbar for the filter panel. The track is inset by the
+   card's corner radius so the bar never gets clipped by the rounded
+   corners, while scrolled content can still reach the card's top edge. */
+.panel-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+.panel-scroll::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 9999px;
+}
+.panel-scroll::-webkit-scrollbar-thumb:hover {
+  background: var(--color-muted-foreground);
+}
+.panel-scroll::-webkit-scrollbar-track {
+  background: transparent;
+  margin-block: 14px;
+}

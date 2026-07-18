@@ -454,7 +454,7 @@ function Index() {
             }}
             className="flex flex-col min-h-0 flex-1"
           >
-          <CardContent className="mt-3.5 pt-0.5 space-y-2 overflow-y-auto flex-1 min-h-0">
+          <CardContent className="panel-scroll pt-4 space-y-2 overflow-y-auto flex-1 min-h-0">
             <FilterGroup label="Sender & recipient">
             <Field label="From contains / not">
               <div className="flex gap-1">
