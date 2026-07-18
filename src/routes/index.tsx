@@ -892,7 +892,7 @@ function FilterGroup({
   return (
     <details
       open={defaultOpen}
-      className="group py-1.5 -mx-2 px-2 rounded-md transition-colors hover:bg-muted/40"
+      className="group pt-1.5 pb-2 -mx-2 px-2 rounded-md transition-colors hover:bg-muted/40"
     >
       <summary className="cursor-pointer list-none flex items-center justify-between text-sm font-medium select-none py-1">
         <span>{label}</span>
