@@ -448,7 +448,7 @@ function Index() {
             <h1 className="text-xl font-semibold">Gmail Sweep</h1>
             <p className="text-xs text-muted-foreground">{email ?? "loading…"}</p>
           </div>
-          <Button variant="outline" size="sm" onClick={handleDisconnect}>
+          <Button variant="secondary" size="sm" onClick={handleDisconnect}>
             <LogOut className="h-4 w-4 mr-1" /> Disconnect
           </Button>
         </div>
@@ -646,7 +646,7 @@ function Index() {
               </Button>
               <Button
                 type="button"
-                variant="outline"
+                variant="secondary"
                 onClick={() => {
                   setFilters(emptyFilters);
                   setMessages([]);
@@ -699,7 +699,7 @@ function Index() {
               <>
                 <div className="flex items-center gap-2 mb-2 text-sm min-w-0">
                   <Button
-                    variant="outline"
+                    variant="secondary"
                     size="sm"
                     onClick={handleSelectAllMatching}
                     disabled={selectingAll}
