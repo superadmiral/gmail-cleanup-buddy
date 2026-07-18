@@ -890,13 +890,10 @@ function FilterGroup({
   children: React.ReactNode;
 }) {
   return (
-    <details
-      open={defaultOpen}
-      className="group border-b last:border-b-0 py-2 -mx-2 px-2 rounded-md transition-colors hover:bg-muted/40"
-    >
-      <summary className="cursor-pointer list-none flex items-center justify-between text-sm font-medium select-none py-1">
+    <details open={defaultOpen} className="group border-b last:border-b-0 py-2">
+      <summary className="group/header cursor-pointer list-none flex items-center justify-between text-sm font-medium select-none py-1 -mx-2 px-2 rounded-md transition-colors hover:bg-muted/50">
         <span>{label}</span>
-        <ChevronRight className="h-3.5 w-3.5 text-muted-foreground transition-transform group-open:rotate-90 group-hover:text-foreground" />
+        <ChevronRight className="h-3.5 w-3.5 text-muted-foreground transition-transform group-open:rotate-90 group-hover/header:text-foreground" />
       </summary>
       <div className="space-y-3 pt-2">{children}</div>
     </details>
