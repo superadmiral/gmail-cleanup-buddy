@@ -143,11 +143,13 @@
   }
 }
 
-/* Slim custom scrollbar for the filter panel. The track is inset by the
-   card's corner radius so the bar never gets clipped by the rounded
-   corners, while scrolled content can still reach the card's top edge. */
+/* Slim custom scrollbar shared by the filter panel and the results list.
+   The track is inset by the container's corner radius so the bar never
+   gets clipped by rounded corners, while scrolled content can still
+   reach the container's edge. */
 .panel-scroll::-webkit-scrollbar {
   width: 8px;
+  height: 8px;
 }
 .panel-scroll::-webkit-scrollbar-thumb {
   background: var(--color-border);
@@ -159,4 +161,5 @@
 .panel-scroll::-webkit-scrollbar-track {
   background: transparent;
   margin-block: 14px;
+  margin-inline: 8px;
 }

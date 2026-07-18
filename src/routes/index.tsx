@@ -741,7 +741,7 @@ function Index() {
                   </Button>
                 </div>
                 <div
-                  className={`border rounded-md overflow-auto min-[600px]:flex-1 min-[600px]:min-h-0 transition-opacity ${
+                  className={`panel-scroll border rounded-md overflow-auto min-[600px]:flex-1 min-[600px]:min-h-0 transition-opacity ${
                     searching ? "opacity-50 pointer-events-none" : ""
                   }`}
                 >
