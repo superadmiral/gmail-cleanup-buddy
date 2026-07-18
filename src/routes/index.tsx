@@ -873,7 +873,7 @@ function NativeSelect(props: React.ComponentProps<"select">) {
     <div className="relative">
       <select
         {...props}
-        className="w-full appearance-none rounded-md border border-input bg-transparent h-9 pl-3 pr-8 text-base md:text-sm shadow-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+        className="w-full appearance-none rounded-md border border-input bg-background h-9 pl-3 pr-8 text-base md:text-sm shadow-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
       />
       <ChevronDown className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground" />
     </div>
@@ -890,10 +890,13 @@ function FilterGroup({
   children: React.ReactNode;
 }) {
   return (
-    <details open={defaultOpen} className="group py-1.5">
-      <summary className="group/header cursor-pointer list-none flex items-center justify-between text-sm font-medium select-none py-1 -mx-2 px-2 rounded-md transition-colors hover:bg-muted/50">
+    <details
+      open={defaultOpen}
+      className="group py-1.5 -mx-2 px-2 rounded-md transition-colors hover:bg-muted/40"
+    >
+      <summary className="cursor-pointer list-none flex items-center justify-between text-sm font-medium select-none py-1">
         <span>{label}</span>
-        <ChevronRight className="h-3.5 w-3.5 text-muted-foreground transition-transform group-open:rotate-90 group-hover/header:text-foreground" />
+        <ChevronRight className="h-3.5 w-3.5 text-muted-foreground transition-transform group-open:rotate-90 group-hover:text-foreground" />
       </summary>
       <div className="space-y-3 pt-2">{children}</div>
     </details>
