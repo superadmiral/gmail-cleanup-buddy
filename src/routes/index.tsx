@@ -448,7 +448,7 @@ function Index() {
             <h1 className="text-xl font-semibold">Gmail Sweep</h1>
             <p className="text-xs text-muted-foreground">{email ?? "loading…"}</p>
           </div>
-          <Button variant="secondary" size="sm" onClick={handleDisconnect}>
+          <Button variant="secondary" onClick={handleDisconnect}>
             <LogOut className="h-4 w-4 mr-1" /> Disconnect
           </Button>
         </div>
