@@ -7,6 +7,8 @@ queries without memorizing syntax, preview matches with per-message sizes,
 select every match in one click, and trash tens of thousands in seconds.
 Built with TanStack Start + React + Tailwind.
 
+![Gmail Sweep — filter builder and bulk results](docs/screenshot-main.png)
+
 - **Safe:** moves messages to Gmail Trash (recoverable for 30 days). Never
   permanent-deletes — uses only the `gmail.modify` scope.
 - **Private:** OAuth tokens live in your browser's `localStorage`. The
