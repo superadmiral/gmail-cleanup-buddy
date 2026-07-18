@@ -423,7 +423,16 @@ function Index() {
             </Button>
             <p className="text-xs text-muted-foreground">
               Requires <code>gmail.modify</code> scope. Messages go to Trash (recoverable for 30
-              days) — never permanently deleted.
+              days) — never permanently deleted.{" "}
+              <a
+                href="https://github.com/superadmiral/gmail-cleanup-buddy"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline underline-offset-2 hover:text-foreground"
+              >
+                Open source on GitHub
+              </a>
+              .
             </p>
           </CardContent>
         </Card>
@@ -852,8 +861,16 @@ function Index() {
       </main>
 
       <footer className="max-w-6xl w-full mx-auto px-6 py-3 text-xs text-muted-foreground min-[600px]:shrink-0">
-        Open source. Tokens stored in your browser localStorage. Messages move to Trash
-        (recoverable for 30 days) — empty Trash in Gmail to reclaim storage immediately.
+        <a
+          href="https://github.com/superadmiral/gmail-cleanup-buddy"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline underline-offset-2 hover:text-foreground"
+        >
+          Open source on GitHub
+        </a>
+        . Tokens stored in your browser localStorage. Messages move to Trash (recoverable for
+        30 days) — empty Trash in Gmail to reclaim storage immediately.
       </footer>
     </div>
   );
