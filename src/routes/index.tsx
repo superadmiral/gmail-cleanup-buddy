@@ -235,6 +235,29 @@ function Index() {
 
   const query = useMemo(() => buildQuery(filters), [filters]);
 
+  // Per-group count of active filters, shown as a badge on each group
+  // header so active filters stay visible when a group is collapsed.
+  const activeCounts = useMemo(() => {
+    const has = (s: string) => s.trim() !== "";
+    return {
+      sender: [filters.from, filters.fromNot, filters.to].filter(has).length,
+      metadata:
+        (filters.unreadOnly ? 1 : 0) +
+        (filters.hasListUnsubscribe ? 1 : 0) +
+        (filters.category ? 1 : 0) +
+        (has(filters.label) ? 1 : 0) +
+        (filters.hasAttachment !== "any" ? 1 : 0),
+      content: [filters.subject, filters.subjectNot, filters.keyword].filter(has).length,
+      dateSize: [
+        filters.olderThanDays,
+        filters.newerThanDays,
+        filters.largerThanMb,
+        filters.smallerThanMb,
+      ].filter(has).length,
+      advanced: has(filters.raw) ? 1 : 0,
+    };
+  }, [filters]);
+
   async function handleConnect() {
     const { url } = await fnAuthUrl({ data: { origin: window.location.origin } });
     // Google blocks OAuth inside iframes (X-Frame-Options: DENY). When we're
@@ -464,7 +487,7 @@ function Index() {
             className="flex flex-col min-h-0 flex-1"
           >
           <CardContent className="panel-scroll pt-4 space-y-2 overflow-y-auto flex-1 min-h-0">
-            <FilterGroup label="Sender & recipient">
+            <FilterGroup label="Sender & recipient" activeCount={activeCounts.sender}>
             <Field label="From contains / not">
               <div className="flex gap-1">
                 <Input
@@ -489,7 +512,7 @@ function Index() {
               />
             </Field>
             </FilterGroup>
-            <FilterGroup label="Gmail metadata" defaultOpen>
+            <FilterGroup label="Gmail metadata" defaultOpen activeCount={activeCounts.metadata}>
             <div className="flex items-center gap-2">
               <Checkbox
                 id="unread"
@@ -556,7 +579,7 @@ function Index() {
               </NativeSelect>
             </Field>
             </FilterGroup>
-            <FilterGroup label="Content">
+            <FilterGroup label="Content" activeCount={activeCounts.content}>
             <Field label="Subject contains / not">
               <div className="flex gap-1">
                 <Input
@@ -579,7 +602,7 @@ function Index() {
               />
             </Field>
             </FilterGroup>
-            <FilterGroup label="Date & size">
+            <FilterGroup label="Date & size" activeCount={activeCounts.dateSize}>
             <div className="grid grid-cols-2 gap-2">
               <Field label="Older than (days)">
                 <Input
@@ -621,7 +644,7 @@ function Index() {
               </Field>
             </div>
             </FilterGroup>
-            <FilterGroup label="Advanced">
+            <FilterGroup label="Advanced" activeCount={activeCounts.advanced}>
             <Field label="Raw Gmail query">
               <Input
                 placeholder="e.g. before:2025/01/01"
@@ -900,10 +923,12 @@ function NativeSelect(props: React.ComponentProps<"select">) {
 function FilterGroup({
   label,
   defaultOpen = false,
+  activeCount = 0,
   children,
 }: {
   label: string;
   defaultOpen?: boolean;
+  activeCount?: number;
   children: React.ReactNode;
 }) {
   return (
@@ -912,7 +937,17 @@ function FilterGroup({
       className="group pt-1.5 pb-2 -mx-2 px-2 rounded-md transition-colors hover:bg-muted/40"
     >
       <summary className="cursor-pointer list-none flex items-center justify-between text-sm font-medium select-none py-1">
-        <span>{label}</span>
+        <span className="flex items-center gap-2">
+          {label}
+          {activeCount > 0 && (
+            <span
+              className="inline-flex h-4 min-w-4 items-center justify-center rounded-full bg-muted px-1 text-[10px] font-medium leading-none text-muted-foreground"
+              title={`${activeCount} active filter${activeCount === 1 ? "" : "s"} in this group`}
+            >
+              {activeCount}
+            </span>
+          )}
+        </span>
         <ChevronRight className="h-3.5 w-3.5 text-muted-foreground transition-transform group-open:rotate-90 group-hover:text-foreground" />
       </summary>
       <div className="space-y-3 pt-2">{children}</div>
