@@ -448,7 +448,7 @@ function Index() {
               Requires <code>gmail.modify</code> scope. Messages go to Trash (recoverable for 30
               days) — never permanently deleted.{" "}
               <a
-                href="https://github.com/superadmiral/gmail-cleanup-buddy"
+                href="https://github.com/superadmiral/gmail-sweep"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="underline underline-offset-2 hover:text-foreground"
@@ -885,7 +885,7 @@ function Index() {
 
       <footer className="max-w-6xl w-full mx-auto px-6 py-3 text-xs text-muted-foreground min-[600px]:shrink-0">
         <a
-          href="https://github.com/superadmiral/gmail-cleanup-buddy"
+          href="https://github.com/superadmiral/gmail-sweep"
           target="_blank"
           rel="noopener noreferrer"
           className="underline underline-offset-2 hover:text-foreground"
